@@ -1,28 +1,11 @@
 import React, { FC } from "react";
 import Ticket from "../Ticket/Ticket";
 
-type TicketType  = {
-  id:string;
-  title:string;
-  body:string;
-}
-
-type LaneProps = {
-  laneId: string;
-  tickets: Array<TicketType>;
-  loading: string;
-  error: string;
-  onDragStart: (event:any, ticketId:string) => void;    
-  onDragOver: (event:any) => void;
-  onDrop: (event:any, laneId:string) => void
-  title: string;
-};
-
 const Lane: FC<LaneProps> = (props: LaneProps) => (
   <div
     className="LaneWrapper"
-    onDragOver={(e) => props.onDragOver(e)}
-    onDrop={(e) => props.onDrop(e, props.laneId)}
+    onDragOver={(event:React.DragEvent<HTMLDivElement>) => props.onDragOver(event)}
+    onDrop={(event:React.DragEvent<HTMLDivElement>) => props.onDrop(event, props.laneId)}
   >
     <h2 className="Title">{props.title}</h2>
     {(props.loading || props.error) && (
@@ -30,7 +13,7 @@ const Lane: FC<LaneProps> = (props: LaneProps) => (
     )}
     <div className="TicketsWrapper">
       {props.tickets.map((ticket) => (
-        <Ticket key={ticket.id} onDragStart={props.onDragStart} ticket={ticket} />
+        <Ticket key={ticket.id} onDragStart={props.onDragStart} ticket={ticket} marginRight />
       ))}
     </div>
   </div>

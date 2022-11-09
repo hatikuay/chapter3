@@ -1,7 +1,7 @@
 import React from "react";
-import Board from "./Board";
-import Tickets from "./Tickets";
 import Header from "./components/Header/Header";
+import Tickets from "./containers/Tickets/Tickets";
+import Board from "./containers/Board/Board";
 
 const App = () => {
   const lanes = [
