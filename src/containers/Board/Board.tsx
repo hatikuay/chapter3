@@ -22,7 +22,6 @@ const Board: FC<BoardProps> = (props: BoardProps) => {
 
   const onDrop = (event:React.DragEvent<HTMLDivElement>, laneId: number) => {
     const id = event.dataTransfer.getData("id");
-
     const myTickets = tickets.filter((ticket) => {
       if (ticket.id === parseInt(id)) {
         ticket.lane = laneId;

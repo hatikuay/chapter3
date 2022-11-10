@@ -1,19 +1,12 @@
 import React, { FC } from "react";
 import "./Ticket.css";
 
-/*
-        &:not(:last-child) {
-          marginBottom: "5%",
-          marginRight: ${() => (!!props.marginRight ? '1%' : '0')};
-
-*/
-
 const Ticket: FC<TicketProps> = (props: TicketProps) => {
   
   let marginRight:string;
   !!props.marginRight ? marginRight = '1%' : marginRight = '0'
   
-  const h1Styles = {
+  const Ticket = {
     backgroundColor: "darkGray",
     padding: "20px",
     borderRadius: "20px",
@@ -22,10 +15,10 @@ const Ticket: FC<TicketProps> = (props: TicketProps) => {
   };
 
   return (
-  <div style={h1Styles}
+  <div style={Ticket}
     draggable
-    onDragStart={(e) =>
-      props.onDragStart && props.onDragStart(e, props.ticket.id)
+    onDragStart={(event:React.DragEvent<HTMLDivElement>) =>
+      props.onDragStart && props.onDragStart(event, props.ticket.id)
     }
     
   >
