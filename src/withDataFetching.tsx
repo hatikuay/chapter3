@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
 
-export default function withDataFetching(WrappedComponent: React.FC<ContainerProps>) {
+export default function withDataFetching(WrappedComponent: React.FC<any>) {
 
   const WithDataFetching: FC<WithDataFetchingProps> = (props: WithDataFetchingProps) => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<Array<TicketType>>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -15,6 +15,7 @@ export default function withDataFetching(WrappedComponent: React.FC<ContainerPro
         if (dataJSON) {
           setData(dataJSON);
           setLoading(false);
+          console.log(dataJSON);
         }
       } catch (error: any) {
         setLoading(false);
@@ -22,7 +23,9 @@ export default function withDataFetching(WrappedComponent: React.FC<ContainerPro
       }
     }
 
-    useEffect(() => { fetchData(), [] })
+    useEffect(() => { 
+      fetchData()
+    },[])
 
 
     return (

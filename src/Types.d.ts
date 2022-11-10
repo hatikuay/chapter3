@@ -34,14 +34,21 @@ type Lane = {
     title: string;
 }
 
-type ContainerProps = {
+type TicketsProps = {
     loading: boolean;
     error: string;
     data: Array<TicketType>;
-    lanes?: Array<Lane>
+}
+
+type BoardProps = {
+    loading: boolean;
+    error: string;
+    data: Array<TicketType>;
+    lanes: Array<Lane>
 }
 
 type WithDataFetchingProps = {
     dataSource: string;
+    lanes?: Array<Lane>
 }
 

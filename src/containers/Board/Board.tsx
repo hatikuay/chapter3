@@ -3,9 +3,9 @@ import withDataFetching from '../../withDataFetching';
 import Lane from '../../components/Lane/Lane';
 import "./Board.css"
 
-const Board: FC<ContainerProps> = (props: ContainerProps) => {
+const Board: FC<BoardProps> = (props: BoardProps) => {
   const [tickets, setTickets] = useState<Array<TicketType>>([]);
-  const prevPropsRef = useRef<ContainerProps>(props);
+  const prevPropsRef = useRef<BoardProps>(props);
   useEffect(() => {
     if (prevPropsRef.current.data !== props.data) {
       setTickets(props.data);
@@ -35,7 +35,7 @@ const Board: FC<ContainerProps> = (props: ContainerProps) => {
 
   return (
     <div className='BoardWrapper'>
-      {props.lanes?.map(lane => (
+      {props.lanes.map(lane => (
         <Lane
           key={lane.id}
           laneId={lane.id}
