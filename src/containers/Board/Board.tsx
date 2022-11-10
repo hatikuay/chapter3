@@ -1,7 +1,7 @@
-import React, { FC, useState, useEffect, useRef } from 'react';
-import withDataFetching from '../../withDataFetching';
-import Lane from '../../components/Lane/Lane';
-import "./Board.css"
+import React, { FC, useState, useEffect, useRef } from "react";
+import withDataFetching from "../../withDataFetching";
+import Lane from "../../components/Lane/Lane";
+import "./Board.css";
 
 const Board: FC<BoardProps> = (props: BoardProps) => {
   const [tickets, setTickets] = useState<Array<TicketType>>([]);
@@ -12,30 +12,30 @@ const Board: FC<BoardProps> = (props: BoardProps) => {
     }
   }, [props.data]);
 
-  const onDragStart = (event: React.DragEvent<HTMLDivElement>, id: number) => {
-    event.dataTransfer.setData('id', id.toString());
+  const onDragStart = (event:any, id: number) => {
+    event.dataTransfer.setData("id", id.toString());
   };
 
-  const onDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+  const onDragOver = (event:any) => {
     event.preventDefault();
   };
 
-  const onDrop = (event: React.DragEvent<HTMLDivElement>, laneId: number) => {
-    const id = event.dataTransfer.getData('id');
+  const onDrop = (event:any, laneId: number) => {
+    const id = event.dataTransfer.getData("id");
 
-    const myTickets = tickets.filter(ticket => {
+    const myTickets = tickets.filter((ticket) => {
       if (ticket.id === parseInt(id)) {
         ticket.lane = laneId;
       }
       return ticket;
     });
 
-    setTickets({ ...myTickets, ...tickets });
+    setTickets(myTickets);
   };
 
   return (
-    <div className='BoardWrapper'>
-      {props.lanes.map(lane => (
+    <div className="BoardWrapper">
+      {props.lanes.map((lane) => (
         <Lane
           key={lane.id}
           laneId={lane.id}
@@ -45,14 +45,11 @@ const Board: FC<BoardProps> = (props: BoardProps) => {
           onDragStart={onDragStart}
           onDragOver={onDragOver}
           onDrop={onDrop}
-          tickets={tickets.filter(
-            ticket => ticket.lane === lane.id,
-          )}
+          tickets={tickets.filter((ticket) => ticket.lane === lane.id)}
         />
       ))}
     </div>
   );
-
-}
+};
 
 export default withDataFetching(Board);

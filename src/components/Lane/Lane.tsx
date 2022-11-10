@@ -5,8 +5,8 @@ import "./Lane.css";
 const Lane: FC<LaneProps> = (props: LaneProps) => (
   <div
     className="LaneWrapper"
-    onDragOver={(event:React.DragEvent<HTMLDivElement>) => props.onDragOver(event)}
-    onDrop={(event:React.DragEvent<HTMLDivElement>) => props.onDrop(event, props.laneId)}
+    onDragOver={(event:any) => props.onDragOver(event)}
+    onDrop={(event:any) => props.onDrop(event, props.laneId)}
   >
     <h2 className="Title">{props.title}</h2>
     {(props.loading || props.error) && (

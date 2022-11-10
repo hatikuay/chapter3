@@ -10,9 +10,9 @@ type LaneProps = {
     tickets: Array<TicketType>;
     loading: boolean;
     error: string;
-    onDragStart: (event: React.DragEvent<HTMLDivElement>, ticketId: number) => void;
-    onDragOver: (event: React.DragEvent<HTMLDivElement>) => void;
-    onDrop: (event: React.DragEvent<HTMLDivElement>, laneId: number) => void
+    onDragStart: (event:any, ticketId: number) => void;
+    onDragOver: (event:any) => void;
+    onDrop: (event:any, laneId: number) => void
     title: string;
 }
 
