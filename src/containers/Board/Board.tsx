@@ -12,15 +12,15 @@ const Board: FC<BoardProps> = (props: BoardProps) => {
     }
   }, [props.data]);
 
-  const onDragStart = (event:any, id: number) => {
+  const onDragStart = (event:React.DragEvent<HTMLDivElement>, id: number) => {
     event.dataTransfer.setData("id", id.toString());
   };
 
-  const onDragOver = (event:any) => {
+  const onDragOver = (event:React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 
-  const onDrop = (event:any, laneId: number) => {
+  const onDrop = (event:React.DragEvent<HTMLDivElement>, laneId: number) => {
     const id = event.dataTransfer.getData("id");
 
     const myTickets = tickets.filter((ticket) => {
