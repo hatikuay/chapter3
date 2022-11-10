@@ -1,38 +1,37 @@
-import React, { FC } from 'react';
-import "./TicketWrapper.css"
+import React, { FC } from "react";
+import "./Ticket.css";
 
-const TicketWrapper: FC<TicketWrapperProps> = (props: TicketWrapperProps) => {
-
-  return (
-    <style>{`
-      div {
-        background: darkGray;
-        padding: 20px;
-        border-radius: 20px;
+/*
         &:not(:last-child) {
           marginBottom: "5%",
           marginRight: ${() => (!!props.marginRight ? '1%' : '0')};
-        }
-      }`
-    }
-      <div>
-        {props.children}
-      </div>
-    </style>
-  );
-};
 
+*/
 
+const Ticket: FC<TicketProps> = (props: TicketProps) => {
+  
+  let marginRight:string;
+  !!props.marginRight ? marginRight = '1%' : marginRight = '0'
+  
+  const h1Styles = {
+    backgroundColor: "darkGray",
+    padding: "20px",
+    borderRadius: "20px",
+    marginBottom: "5%",
+    marginRight: marginRight
+  };
 
-const Ticket: FC<TicketProps> = (props: TicketProps) => (
-  <TicketWrapper
+  return (
+  <div style={h1Styles}
     draggable
-    onDragStart={e => props.onDragStart && props.onDragStart(e, props.ticket.id)}
-    marginRight={props.marginRight}
+    onDragStart={(e) =>
+      props.onDragStart && props.onDragStart(e, props.ticket.id)
+    }
+    
   >
-    <h3 className='Title'>{props.ticket.title}</h3>
-    <div className='Body'>{props.ticket.body}</div>
-  </TicketWrapper>
-);
+    <h3 className="Title">{props.ticket.title}</h3>
+    <div className="Body">{props.ticket.body}</div>
+  </div>)
+}
 
 export default Ticket;

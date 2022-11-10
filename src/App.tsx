@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header/Header";
 import Tickets from "./containers/Tickets/Tickets";
 import Board from "./containers/Board/Board";
+import "./App.css"
 
 const App = () => {
   const lanes = [

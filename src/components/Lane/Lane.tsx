@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import Ticket from "../Ticket/Ticket";
+import "./Lane.css";
 
 const Lane: FC<LaneProps> = (props: LaneProps) => (
   <div
@@ -11,7 +12,7 @@ const Lane: FC<LaneProps> = (props: LaneProps) => (
     {(props.loading || props.error) && (
       <div className="Alert">{props.loading ? "Loading..." : props.error}</div>
     )}
-    <div className="TicketsWrapper">
+    <div className="TicketWrapper">
       {props.tickets.map((ticket) => (
         <Ticket key={ticket.id} onDragStart={props.onDragStart} ticket={ticket} marginRight />
       ))}
